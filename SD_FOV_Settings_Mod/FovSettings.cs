@@ -11,7 +11,7 @@ namespace SD_FOV_Settings_Mod
         private Slider? fovSlider;
         private TMP_Text? fovSliderLabel;
         public byte fov;
-        static Camera[] cameras;
+        private static Camera[] cameras;
 
         public void Start()
         {
@@ -30,10 +30,10 @@ namespace SD_FOV_Settings_Mod
 
             //Set Values
             fovSlider = foundSliderTransform.GetComponent<Slider>();
-            fovSlider.value = fov;
             fovSlider.maxValue = MAX_FOV;
             fovSlider.minValue = MIN_FOV;
             fovSlider.onValueChanged.AddListener(OnSliderValueChanged);
+            fovSlider.value = fov;
             fovSlider.Rebuild(CanvasUpdate.Layout);
 
             fovSliderLabel = fovSlider.transform.parent.GetComponentInChildren<TMP_Text>();
